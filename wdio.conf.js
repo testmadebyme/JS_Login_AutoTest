@@ -74,7 +74,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'silent',
     //
     // Set specific log levels per logger
     // loggers:
@@ -86,8 +86,8 @@ exports.config = {
     // - @wdio/cli, @wdio/config, @wdio/sync, @wdio/utils
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     // logLevels: {
-    //     webdriver: 'info',
-    //     '@wdio/applitools-service': 'info'
+    //     webdriver: 'silent',
+    //     '@wdio/applitools-service': 'silent'
     // },
     //
     // If you only want to run your tests until a specific amount of tests have failed use
@@ -155,25 +155,29 @@ exports.config = {
             outputDir: './video',
             saveAllVideos: true,       // If true, also saves videos for successful test cases
             videoSlowdownMultiplier: 10,
+            rawSeleniumVideoGrabs: './video_2',
+            addExcludedActions:[],
+            addJsonWireActions:[],
             videoRenderTimeout: 5 // Higher to get slower videos, lower for faster videos [Value 1-100]
           }],
-
     ],
 
     // mochawesomeOpts: {
-    //     includeScreenshots:true,
-    //     screenshotUseRelativePath:true
+    //     includeScreenshots:false,
+    //     screenshotUseRelativePath:true,
+    //     //disableWebdriverScreenshotsReporting: true,
     // },
 
 
-
+    
 
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000,
+        require: ['@babel/register'],
     },
     //
     // =====

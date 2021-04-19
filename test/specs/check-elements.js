@@ -2,8 +2,12 @@ const LoginPage = require('../pageobjects/login.page');
 
 describe('My Login application', () => {
 
-    it('should have the right page title', () => {
+    it('should have the right page link', () => {
         LoginPage.open();
+        expect(browser).toHaveUrlContaining('registerlogin')
+    });
+
+    it('should have the right page title', () => {
         expect(browser).toHaveTitle(
             'Login'
         );
@@ -19,6 +23,7 @@ describe('My Login application', () => {
         expect(h1).toBeVisible();
         expect(h1).toHaveTextContaining('QA Portal Login');
     });
+
 
     it ('input shold be visible', () => {
         const input = $('input');
@@ -38,8 +43,8 @@ describe('My Login application', () => {
 
     it('should detect if input field are existing', () => {
     
-        elem = $('[name="username"]')
-        isExisting = elem.isExisting()
+        let elem = $('#input')
+        let isExisting = elem.isExisting()
         console.log(isExisting); // outputs: true visibility: blue
     });
 
@@ -51,8 +56,8 @@ describe('My Login application', () => {
 
     it('should detect if input field are existing', () => {
     
-        elem = $('[name="password"]')
-        isExisting = elem.isExisting()
+        let elem = $('[name="password"]')
+        let isExisting = elem.isExisting()
         console.log(isExisting); // outputs: true visibility: blue
     });
 
