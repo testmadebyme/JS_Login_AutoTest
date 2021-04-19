@@ -3,7 +3,10 @@ const SecurePage = require('../pageobjects/secure.page');
 const ErrorMess = require('../pageobjects/error.mess');
 
 // Get the credentials from the JSON file
-let { username, password } = require("./data.json");
+let { username, password } = require("../helpers/right-login-data.json");
+// let { username, password } = require("../helpers/error-login-data.json");
+let { long_username, long_password } = require("../helpers/long-login-data.json");
+let { special_username, special_password } = require("../helpers/special-login-data.json");
 
 describe('My Login application', () => {
 
@@ -63,6 +66,22 @@ describe('My Login application', () => {
         LoginPage.open();
 
         LoginPage.login(password, username);
+        expect(ErrorMess.helpMessage).toHaveTextContaining(
+            'No account found with that username.');
+    });
+
+    it('should login with long data credentials', () => {
+        LoginPage.open();
+
+        LoginPage.login(long_password, long_username);
+        expect(ErrorMess.helpMessage).toHaveTextContaining(
+            'No account found with that username.');
+    });
+
+    it('should login with specials credentials', () => {
+        LoginPage.open();
+
+        LoginPage.login(special_password, special_username);
         expect(ErrorMess.helpMessage).toHaveTextContaining(
             'No account found with that username.');
     });
