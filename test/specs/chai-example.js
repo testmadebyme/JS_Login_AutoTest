@@ -36,4 +36,13 @@ describe('My Login application', () => {
     it('title should not be empty', () => {
         chaiExpect(browser).to.not.be.empty;
     });
+
+    it.skip ('logo shold be visible', () => {
+        const img = $('#logomini');
+       // const tag = img.getTagName();
+       console.log(img)
+
+        expect(img).toBeVisible();
+        //chaiExpect(tag).to.equal('img');
+    });
 });
